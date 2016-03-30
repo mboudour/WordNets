@@ -15,6 +15,10 @@ import random
 import math
 import numpy
 import community as comm
+from nltk.tokenize import sent_tokenize, word_tokenize
+import itertools
+import os
+import re
 
 def draw_network(G,sstt,pos={},with_edgewidth=False,withLabels=True,pernode_dict={},labfs=10,valpha=0.4,ealpha=0.4,labelfont=20,with_node_weight=False,node_size_fixer=300.):
     plt.figure(figsize=(12,12))
@@ -196,7 +200,7 @@ def draw_comms(G,dom,idom,doml,nodoml ,par,cpar,d,dd,c,cc,alpha,ealpha,nodper,ss
     for i,v in invpar.items():
         if i not in ninvpar:
             ninvpar[i]=nx.spring_layout(G.subgraph(v))
-    pos=nx.spring_layout(G)        
+    pos=nx.spring_layout(G,scale=70,k=0.8,iterations=20)        
     ells=[]
     ellc=[]
     colors=[name for name,hex in matplotlib.colors.cnames.iteritems()]
@@ -242,7 +246,7 @@ def draw_comms(G,dom,idom,doml,nodoml ,par,cpar,d,dd,c,cc,alpha,ealpha,nodper,ss
         e.set_facecolor(ellc[i])
     nx.draw_networkx_nodes(G,pos=pos, node_color=col,alpha=valpha)  
     nx.draw_networkx_labels(G,pos,labels=labelsn,font_size=labelfont)#,font_color='w')
-    nx.draw_networkx_edges(G,pos,edge_color='g',width=edgewidth, alpha=ealpha)
+    nx.draw_networkx_edges(G,pos,edge_color='b',width=edgewidth, alpha=ealpha)
     plt.axis('equal')
     plt.axis('off')
     plt.show()
@@ -270,5 +274,54 @@ def print_communities(G,sstt):
     print 'Community modularity of %s = %.4f' %(sstt, comm.modularity(part,G))
     return part,nodper
 
-# G=nx.Graph()
-# print_communities(G)
+def occurrences(source,terms):
+    ALL_sentences=sent_tokenize(source)
+    combinations_terms = list(itertools.combinations(terms,2))
+    n = len(combinations_terms)
+    occurlist =[]
+    for i in range(n):
+        for j in ALL_sentences:
+            temp= list(combinations_terms[i])            
+            out  = re.compile(str(temp[0])+'(.*?)'+str(temp[1]), re.DOTALL |  re.IGNORECASE).findall(j)
+            if out :
+                occurlist.append(tuple(temp))
+            out2  = re.compile(str(temp[1])+'(.*?)'+str(temp[0]), re.DOTALL |  re.IGNORECASE).findall(j)
+            if out2 :
+                occurlist.append(tuple(temp))
+    occurdict={}
+    for i in occurlist:
+        if i not in occurdict:
+            occurdict[i] = 1
+        else:
+            occurdict[i] = occurdict[i]+1
+    return occurdict
+
+def makegraph(occurrences):
+    G = nx.Graph()
+    for ed,wei in occurrences.items():   
+        if ed[0] not in G:
+            wei=1
+        else:
+            wei=G.node[ed[0]]['weight']+1
+        if ed[1] not in G:
+            weib=1
+        else:
+            weib=G.node[ed[1]]['weight']+1
+        G.add_edge(ed[0],ed[1],weight=wei)
+        G.add_node(ed[0],label=ed[0],weight=wei)
+        G.add_node(ed[1],label=ed[1],weight=weib)
+    return G
+
+def dhist(G,sstth,pos={},pla=[0.47,0.47,0.47,0.47],a=0.3):
+	degree_sequence=sorted(G.degree().values(),reverse=True)
+	dmax=max(degree_sequence)
+	plt.figure(figsize=(16,10))
+	plt.plot(degree_sequence,'g-',marker='o')
+	plt.ylabel("Degree")
+	plt.xlabel("Number of nodes")
+	plt.axes(pla)
+	nx.draw_networkx_nodes(G,pos=pos,node_size=20,node_color='g',alpha=a)
+	nx.draw_networkx_edges(G,pos=pos,alpha=a)
+	plt.title(sstth,fontsize=17)
+	kk=plt.axis('off')
+
