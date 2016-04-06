@@ -296,6 +296,29 @@ def occurrences(source,terms):
             occurdict[i] = occurdict[i]+1
     return occurdict
 
+def occurrences_dic(source,terms,dici):
+    ALL_sentences=sent_tokenize(source)
+    combinations_terms = list(itertools.combinations(terms,2))
+    n = len(combinations_terms)
+    occurlist =[]
+    for i in range(n):
+        for j in ALL_sentences:
+            temp= list(combinations_terms[i])            
+            out  = re.compile(str(temp[0])+'(.*?)'+str(temp[1]), re.DOTALL |  re.IGNORECASE).findall(j)
+            if out :
+                occurlist.append((dici[temp[0],dici[temp[1]]]))
+            out2  = re.compile(str(temp[1])+'(.*?)'+str(temp[0]), re.DOTALL |  re.IGNORECASE).findall(j)
+            if out2 :
+                occurlist.append((dici[temp[0],dici[temp[1]]]))
+    occurdict={}
+    for i in occurlist:
+        if i not in occurdict:
+            occurdict[i] = 1
+        else:
+            occurdict[i] = occurdict[i]+1
+    return occurdict
+
+
 def makegraph(occurrences):
     G = nx.Graph()
     for ed,wei in occurrences.items():   
@@ -312,16 +335,17 @@ def makegraph(occurrences):
         G.add_node(ed[1],label=ed[1],weight=weib)
     return G
 
-def dhist(G,sstth,pos={},pla=[0.47,0.47,0.47,0.47],a=0.3):
-	degree_sequence=sorted(G.degree().values(),reverse=True)
-	dmax=max(degree_sequence)
-	plt.figure(figsize=(16,10))
-	plt.plot(degree_sequence,'g-',marker='o')
-	plt.ylabel("Degree")
-	plt.xlabel("Number of nodes")
-	plt.axes(pla)
-	nx.draw_networkx_nodes(G,pos=pos,node_size=20,node_color='g',alpha=a)
-	nx.draw_networkx_edges(G,pos=pos,alpha=a)
-	plt.title(sstth,fontsize=17)
-	kk=plt.axis('off')
+def dhist(G,sstth,pos={},pla=[0.47,0.47,0.47,0.47],a=0.3,figsize=(16,10)):
+    degree_sequence=sorted(G.degree().values(),reverse=True)
+    dmax=max(degree_sequence)
+    plt.figure(figsize=figsize)
+    plt.plot(degree_sequence,'g-',marker='o')
+    plt.ylabel("Degree")
+    plt.xlabel("Number of nodes")
+    plt.title(sstth,fontsize=17)
+    plt.axes(pla)
+    nx.draw_networkx_nodes(G,pos=pos,node_size=20,node_color='g',alpha=a)
+    nx.draw_networkx_edges(G,pos=pos,alpha=a)
+    
+    kk=plt.axis('off')
 
