@@ -19,9 +19,18 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 import itertools
 import os
 import re
+import pandas as pd
+from collections import Counter
+from textblob import TextBlob
+import itertools as it
 
-def draw_network(G,sstt,pos={},with_edgewidth=False,withLabels=True,pernode_dict={},labfs=10,valpha=0.4,ealpha=0.4,labelfont=20,with_node_weight=False,node_size_fixer=300.):
-    plt.figure(figsize=(12,12))
+
+
+
+def draw_network(G,sstt,pos={},with_edgewidth=False,withLabels=True,pernode_dict={},
+    labfs=10,valpha=0.4,ealpha=0.4,labelfont=20,with_node_weight=False,node_size_fixer=300.,
+    with_edgecolor=False,edgecolor='polarity',colormat='Blues'):
+    fig=plt.figure(figsize=(12,12))
     if len(pos)==0:
         pos=nx.spring_layout(G,scale=50)
     if with_edgewidth:
@@ -42,10 +51,67 @@ def draw_network(G,sstt,pos={},with_edgewidth=False,withLabels=True,pernode_dict
             labe=nx.draw_networkx_labels(G,pos=pos,labels=labels,font_size=labelfont)
         else:
             labe=nx.draw_networkx_labels(G,pos=pos,font_size=labfs)
-    nx.draw_networkx_edges(G,pos=pos,edge_color='b',width=edgewidth, alpha=ealpha)#,edge_labels=weights,label_pos=0.2)
+    if with_edgecolor:
+        cmg = plt.cm.get_cmap(colormat)
+        # for i in G.edges(data=True):
+        #     print i
+        #     print i[1][edgecolor]
+        edge_col=[i[2][edgecolor] for i in G.edges(data=True)]
+        ne=nx.draw_networkx_edges(G,pos=pos,edge_color=edge_col,cmap=cmg,width=edgewidth, alpha=ealpha)#,edge_labels=weights,label_pos=0.2)
+        fig.colorbar(ne, orientation='horizontal')
+    else:
+        nx.draw_networkx_edges(G,pos=pos,edge_color='b',width=edgewidth, alpha=ealpha)#,edge_labels=weights,label_pos=0.2)
     plt.title(sstt,fontsize=20)
     kk=plt.axis('off')
     return pos
+
+def draw_network_node_color(G,sstt,pos={},with_edgewidth=False,withLabels=True,pernode_dict={},labfs=10,valpha=0.4,ealpha=0.4,labelfont=20,with_node_weight=False,node_size_fixer=300.,node_col='polarity',colormat='Blues'):
+    fig=plt.figure(figsize=(12,12))
+    nds=[nd for nd in G.nodes() if isinstance(nd,int)]
+    prot=[nd for nd in G.nodes() if nd not in nds]
+    pols=[G.node[i][node_col] for i in nds]
+
+    cm = plt.cm.get_cmap(colormat)#'RdYlBu')
+    # rgbs = [(abs(i),abs(i),0,valpha) for i in pols]
+    # print rgbs
+    if len(pos)==0:
+        pos=nx.spring_layout(G,scale=50)
+    if with_edgewidth:
+        edgewidth=[]
+        for (u,v,d) in G.edges(data=True):
+            edgewidth.append(d['weight'])
+    else:
+        edgewidth=[1 for i in G.edges()]
+    if with_node_weight:
+        node_weights=[node_size_fixer* math.log(nd[1]['weight']) for nd in G.nodes(data=True)]
+        # print node_weights
+        nx.draw_networkx_nodes(G,pos=pos,nodelist=prot,with_labels=False,alpha=valpha,node_size=node_weights)
+        nx.draw_networkx_nodes(G,pos=pos,nodelist=nds,node_color=rgbs,with_labels=False,node_size=node_weights)
+
+    else:
+        nx.draw_networkx_nodes(G,pos=pos,nodelist=prot,node_color='r',with_labels=False,alpha=valpha)
+        nc = nx.draw_networkx_nodes(G,pos=pos,nodelist=nds,node_color=pols,cmap=cm,with_labels=False)#,alpha=valpha)
+
+    if withLabels:
+        if len(pernode_dict)>0:
+            labels={i:v for v,i in pernode_dict.items() if i in G.nodes()}
+            labe=nx.draw_networkx_labels(G,pos=pos,labels=labels,font_size=labelfont)
+        else:
+            labe=nx.draw_networkx_labels(G,pos=pos,font_size=labfs)
+    nx.draw_networkx_edges(G,pos=pos,edge_color='b',width=edgewidth, alpha=ealpha)#,edge_labels=weights,label_pos=0.2)
+    ssnt=sstt+'\n(Sentences colored in %s)' %node_col
+    # fig.title(ssnt,fontsize=20)
+    plt.title(ssnt,fontsize=20)
+    # cbar=
+    fig.colorbar(nc, orientation='horizontal')#),ticks=[-1,0,1])
+    # cbar.ax.set_yticklabels(['< -1', '0', '> 1'])
+    # print nc
+    # cbar = fig.colorbar(nc)#, ticks=[-1, 0, 1])
+    # cbar.ax.set_yticklabels(['< -1', '0', '> 1'])
+    kk=plt.axis('off')
+    fig.tight_layout()
+    return pos
+
 
 def draw_centralities(G,centr,pos,with_edgewidth=False,withLabels=True,pernode_dict={},title_st='', labfs=10,valpha=0.4,ealpha=0.4):
     plt.figure(figsize=(12,12))
@@ -306,10 +372,10 @@ def occurrences_dic(source,terms,dici):
             temp= list(combinations_terms[i])            
             out  = re.compile(str(temp[0])+'(.*?)'+str(temp[1]), re.DOTALL |  re.IGNORECASE).findall(j)
             if out :
-                occurlist.append((dici[temp[0],dici[temp[1]]]))
+                occurlist.append((dici[temp[0]],dici[temp[1]]))
             out2  = re.compile(str(temp[1])+'(.*?)'+str(temp[0]), re.DOTALL |  re.IGNORECASE).findall(j)
             if out2 :
-                occurlist.append((dici[temp[0],dici[temp[1]]]))
+                occurlist.append((dici[temp[0]],dici[temp[1]]))
     occurdict={}
     for i in occurlist:
         if i not in occurdict:
@@ -334,6 +400,22 @@ def makegraph(occurrences):
         G.add_node(ed[0],label=ed[0],weight=wei)
         G.add_node(ed[1],label=ed[1],weight=weib)
     return G
+def makegraph_gr(occurrences,dicci):
+    G = nx.MultiDiGraph()
+    for ii in occurrences:   
+        ed=ii[0]
+        if ed[0] not in G:
+            pol=ii[1]
+        else:
+            pol=G.node[ed[0]]['polarity']+ii[1]
+        if ed[1] not in G:
+            pold=ii[1]
+        else:
+            pold=G.node[ed[1]]['polarity']+ii[1]
+        G.add_edge(ed[0],ed[1],polarity=ii[1],subj=ii[2])
+        G.add_node(ed[0],label=ed[0],weight=dicci[ed[0]],polarity=pol,nweight=dicci[ed[0]]/10.)
+        G.add_node(ed[1],label=ed[1],weight=dicci[ed[1]],polarity=pold,nweight=dicci[ed[1]]/10.)
+    return G
 
 def dhist(G,sstth,pos={},pla=[0.47,0.47,0.47,0.47],a=0.3,figsize=(16,10)):
     degree_sequence=sorted(G.degree().values(),reverse=True)
@@ -349,3 +431,99 @@ def dhist(G,sstth,pos={},pla=[0.47,0.47,0.47,0.47],a=0.3,figsize=(16,10)):
     
     kk=plt.axis('off')
 
+def create_pandas_dataframe_from_text(blobbook,selectedTerms,ndici,titlename):
+    dfst=pd.DataFrame(columns=["%s selected terms" %titlename, "Frequencies"])
+    dflines=pd.DataFrame(columns=["start",'end','sentence_length','sentence','protagonists','#_of_protagonists','polarity','subjectivity'])
+    u=1
+
+    selectedTermsDic={}
+
+    selectedTermsDics=Counter()
+    occurlist =[]
+    coccurlist =[]
+    occurdict=Counter()
+    all_sents=blobbook.sentences
+    sec_prot=nx.MultiGraph()
+    uu=0
+    for sen in all_sents:
+        dd=sen.dict
+
+        ssdd=[i  for i in dd['noun_phrases'] if i in selectedTerms]
+        nssdd=list(set([ndici[i] for i in ssdd]))
+        dflines.loc[uu]=[dd['start_index'],dd['end_index'],dd['end_index']-dd['start_index'],dd['raw'],nssdd,len(nssdd),dd['polarity'],dd['subjectivity']]
+        
+        if len(ssdd)>0:
+            for j in ssdd:
+                selectedTermsDics[ndici[j]]+=1
+        if len(ssdd)==2:
+            coccurlist.append([[ndici[ssdd[0]],ndici[ssdd[1]]],dd['polarity'],dd['subjectivity']])
+            occurlist.append([tuple(sorted([ndici[ssdd[0]],ndici[ssdd[1]]])),dd['polarity'],dd['subjectivity']])
+            for jk in nssdd:
+                sec_prot.add_edge(uu,jk)
+            sec_prot.add_node(uu,polarity=dd['polarity'],subjectivity=dd['subjectivity'])
+
+        elif len(ssdd)>2:
+            for jj in it.combinations(ssdd,2):
+                occurlist.append([tuple(sorted([ndici[jj[0]],ndici[jj[1]]])),dd['polarity'],dd['subjectivity']])
+                coccurlist.append([[ndici[jj[0]],ndici[jj[1]]],dd['polarity'],dd['subjectivity']])
+            for jk in nssdd:
+                sec_prot.add_edge(uu,jk)
+            sec_prot.add_node(uu,polarity=dd['polarity'],subjectivity=dd['subjectivity'])
+        uu+=1
+
+    for i in occurlist:
+        occurdict[i[0]] +=1
+
+    u=0
+    for l,v in selectedTermsDics.items():
+        dfst.loc[u]=[l,v]
+        u+=1
+    return dfst,sec_prot,coccurlist,occurlist,dflines
+
+def make_graph_from_lists(plist,pplist,nplist,splist):
+    G=nx.Graph()
+    gco=Counter()
+    gpo=Counter()
+    gsu=Counter()
+    for i,v in enumerate(plist):
+        for e in it.combinations(v,2):
+            e=tuple(sorted(e))
+            gco[e]+=1
+            gpo[e]+=pplist[i]
+            gsu[e]+=splist[i]
+    for i,v in enumerate(plist):
+        for e in it.combinations(v,2):
+            e=tuple(sorted(e))
+            G.add_edge(e[0],e[1],weight=gco[e],polarity=gpo[e]*1./nplist[i],subjectivity=gsu[e]*1./nplist[i])
+    return G
+
+def create_coo_graph(coccurlist):
+    co_graph=nx.MultiGraph()
+    for i in coccurlist:
+        co_graph.add_edge(i[0][0],i[0][1],polarity=i[1],subjectivity=i[2])
+    return co_graph
+
+def igraph_draw_traj(filname,pold,polar=True):
+    import igraph as ig
+    g = ig.read(filname,format="graphml")
+    pols=[]
+    for i in g.vs:
+        pols.append(pold[i['id']])
+    # print pols
+    if polar:
+        rgbs = [(1-(i+1.)/2,(i+1.)/2,0) for i in pols]
+    else:
+        rgbs = [(1-i,i,0) for i in pols]
+    GGG=nx.read_graphml('S_out_graphs/Sherlock Holmes_graph.graphml')
+    g.vs["label"] = GGG.nodes()
+    visual_style = {}
+    visual_style["vertex_size"] = 15
+    visual_style['vertex_color']=rgbs#'pink'
+    visual_style['vertex_label_size']='12'
+    visual_style["vertex_label"] = g.vs["label"]
+    layout=g.layout("kk")
+    visual_style["layout"] = layout
+    visual_style["bbox"] = (700, 700)
+    visual_style["margin"] = 100
+    return g,visual_style,layout
+    # ig.plot(g,  **visual_style)
