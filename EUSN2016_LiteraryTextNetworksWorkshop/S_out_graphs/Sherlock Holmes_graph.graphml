@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="directed">
+    <node id="John Rance__2" />
+    <node id="Stamford__3" />
+    <node id="Stamford__2" />
+    <node id="Lestrade__9" />
+    <node id="John Rance__5" />
+    <node id="John Rance__4" />
+    <node id="Dr. Watson__3" />
+    <node id="Dr. Watson__2" />
+    <node id="John Rance__1" />
+    <node id="Tobias Gregson__5" />
+    <node id="Tobias Gregson__6" />
+    <node id="Lestrade__6" />
+    <node id="Tobias Gregson__9" />
+    <node id="Lestrade__4" />
+    <node id="Lestrade__3" />
+    <edge source="John Rance__2" target="Dr. Watson__2" />
+    <edge source="John Rance__2" target="Stamford__2" />
+    <edge source="Stamford__3" target="Lestrade__3" />
+    <edge source="Stamford__2" target="Stamford__3" />
+    <edge source="John Rance__5" target="Tobias Gregson__5" />
+    <edge source="John Rance__4" target="John Rance__5" />
+    <edge source="Dr. Watson__3" target="Lestrade__3" />
+    <edge source="Dr. Watson__2" target="Dr. Watson__3" />
+    <edge source="John Rance__1" target="John Rance__2" />
+    <edge source="Tobias Gregson__5" target="Tobias Gregson__6" />
+    <edge source="Tobias Gregson__6" target="Tobias Gregson__9" />
+    <edge source="Tobias Gregson__6" target="Lestrade__6" />
+    <edge source="Lestrade__6" target="Lestrade__9" />
+    <edge source="Lestrade__4" target="John Rance__4" />
+    <edge source="Lestrade__3" target="Lestrade__4" />
+  </graph>
+</graphml>

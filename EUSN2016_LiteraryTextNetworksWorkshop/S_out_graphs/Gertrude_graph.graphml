@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="directed">
+    <node id="Hamlet__13" />
+    <node id="Hamlet__10" />
+    <edge source="Hamlet__10" target="Hamlet__13" />
+  </graph>
+</graphml>

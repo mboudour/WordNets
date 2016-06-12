@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="directed">
+    <node id="Nancy Brown__4" />
+    <node id="Nancy Brown__3" />
+    <edge source="Nancy Brown__3" target="Nancy Brown__4" />
+  </graph>
+</graphml>

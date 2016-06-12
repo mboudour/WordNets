@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="directed">
+    <node id="John Murray__2" />
+    <node id="John Murray__1" />
+    <node id="Mr. Murray__4" />
+    <node id="Mr. Murray__3" />
+    <node id="Matilda Murray__6" />
+    <node id="Matilda Murray__4" />
+    <node id="Mr. Hatfield__3" />
+    <node id="Matilda Murray__2" />
+    <node id="Matilda Murray__1" />
+    <node id="Mr. Hatfield__2" />
+    <edge source="John Murray__2" target="Mr. Hatfield__2" />
+    <edge source="John Murray__1" target="John Murray__2" />
+    <edge source="Mr. Murray__4" target="Matilda Murray__4" />
+    <edge source="Mr. Murray__3" target="Mr. Murray__4" />
+    <edge source="Matilda Murray__4" target="Matilda Murray__6" />
+    <edge source="Mr. Hatfield__3" target="Mr. Murray__3" />
+    <edge source="Matilda Murray__2" target="Mr. Hatfield__2" />
+    <edge source="Matilda Murray__1" target="Matilda Murray__2" />
+    <edge source="Mr. Hatfield__2" target="Mr. Hatfield__3" />
+  </graph>
+</graphml>

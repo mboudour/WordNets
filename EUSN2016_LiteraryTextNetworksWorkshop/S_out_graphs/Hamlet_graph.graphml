@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="directed">
+    <node id="Fortinbras__3" />
+    <node id="Fortinbras__2" />
+    <node id="Laertes__16" />
+    <node id="Laertes__15" />
+    <node id="Fortinbras__7" />
+    <node id="Guildenstern__10" />
+    <node id="Guildenstern__15" />
+    <node id="Guildenstern__14" />
+    <node id="Ophelia__3" />
+    <node id="Ophelia__6" />
+    <node id="Fortinbras__8" />
+    <node id="Gertrude__10" />
+    <node id="Gertrude__13" />
+    <node id="Cornelius__13" />
+    <node id="Cornelius__14" />
+    <node id="Guildenstern__9" />
+    <node id="Guildenstern__7" />
+    <node id="Guildenstern__6" />
+    <node id="Ophelia__8" />
+    <node id="Laertes__1" />
+    <node id="Laertes__2" />
+    <node id="Ophelia__9" />
+    <edge source="Fortinbras__3" target="Ophelia__3" />
+    <edge source="Fortinbras__2" target="Fortinbras__3" />
+    <edge source="Laertes__15" target="Laertes__16" />
+    <edge source="Fortinbras__7" target="Fortinbras__8" />
+    <edge source="Guildenstern__10" target="Gertrude__10" />
+    <edge source="Guildenstern__15" target="Laertes__15" />
+    <edge source="Guildenstern__14" target="Guildenstern__15" />
+    <edge source="Ophelia__3" target="Ophelia__6" />
+    <edge source="Ophelia__6" target="Guildenstern__6" />
+    <edge source="Fortinbras__8" target="Ophelia__8" />
+    <edge source="Gertrude__10" target="Gertrude__13" />
+    <edge source="Gertrude__13" target="Cornelius__13" />
+    <edge source="Cornelius__13" target="Cornelius__14" />
+    <edge source="Cornelius__14" target="Guildenstern__14" />
+    <edge source="Guildenstern__9" target="Guildenstern__10" />
+    <edge source="Guildenstern__7" target="Fortinbras__7" />
+    <edge source="Guildenstern__6" target="Guildenstern__7" />
+    <edge source="Ophelia__8" target="Ophelia__9" />
+    <edge source="Laertes__1" target="Laertes__2" />
+    <edge source="Laertes__2" target="Fortinbras__2" />
+    <edge source="Ophelia__9" target="Guildenstern__9" />
+  </graph>
+</graphml>

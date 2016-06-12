@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="directed">
+    <node id="Goneril__2" />
+    <node id="Regan__3" />
+    <node id="Goneril__1" />
+    <node id="Edgar__6" />
+    <node id="King lear__3" />
+    <node id="King lear__2" />
+    <node id="Edgar__5" />
+    <node id="Edmund__8" />
+    <node id="Regan__4" />
+    <node id="Edmund__6" />
+    <node id="Albany__4" />
+    <node id="Albany__5" />
+    <edge source="Goneril__2" target="King lear__2" />
+    <edge source="Regan__3" target="Regan__4" />
+    <edge source="Goneril__1" target="Goneril__2" />
+    <edge source="Edgar__6" target="Edmund__6" />
+    <edge source="King lear__3" target="Regan__3" />
+    <edge source="King lear__2" target="King lear__3" />
+    <edge source="Edgar__5" target="Edgar__6" />
+    <edge source="Regan__4" target="Albany__4" />
+    <edge source="Edmund__6" target="Edmund__8" />
+    <edge source="Albany__4" target="Albany__5" />
+    <edge source="Albany__5" target="Edgar__5" />
+  </graph>
+</graphml>

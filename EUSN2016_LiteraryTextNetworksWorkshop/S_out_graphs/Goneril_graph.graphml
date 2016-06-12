@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="directed">
+    <node id="King Lear__2" />
+    <node id="King Lear__1" />
+    <node id="King Lear__5" />
+    <node id="King Lear__4" />
+    <edge source="King Lear__1" target="King Lear__2" />
+    <edge source="King Lear__4" target="King Lear__5" />
+  </graph>
+</graphml>

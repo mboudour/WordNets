@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="directed">
+    <node id="Goneril__2" />
+    <node id="Old man__6" />
+    <node id="Goneril__1" />
+    <node id="Old man__3" />
+    <node id="Goneril__4" />
+    <node id="Goneril__5" />
+    <node id="Cordelia__6" />
+    <node id="Old man__4" />
+    <node id="Old man__7" />
+    <node id="Cordelia__5" />
+    <node id="Cordelia__2" />
+    <node id="Cordelia__3" />
+    <node id="Gentleman__7" />
+    <node id="Gentleman__8" />
+    <edge source="Goneril__2" target="Cordelia__2" />
+    <edge source="Old man__6" target="Old man__7" />
+    <edge source="Goneril__1" target="Goneril__2" />
+    <edge source="Old man__3" target="Old man__4" />
+    <edge source="Goneril__4" target="Goneril__5" />
+    <edge source="Goneril__5" target="Cordelia__5" />
+    <edge source="Cordelia__6" target="Old man__6" />
+    <edge source="Old man__4" target="Goneril__4" />
+    <edge source="Old man__7" target="Gentleman__7" />
+    <edge source="Cordelia__5" target="Cordelia__6" />
+    <edge source="Cordelia__2" target="Cordelia__3" />
+    <edge source="Cordelia__3" target="Old man__3" />
+    <edge source="Gentleman__7" target="Gentleman__8" />
+  </graph>
+</graphml>
