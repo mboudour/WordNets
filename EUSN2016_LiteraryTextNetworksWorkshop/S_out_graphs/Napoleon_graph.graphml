@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="directed">
+    <node id="Clover__29" />
+    <node id="Clover__28" />
+    <node id="Squealer__39" />
+    <node id="Snowball__17" />
+    <node id="Snowball__16" />
+    <node id="Squealer__17" />
+    <node id="Squealer__16" />
+    <node id="Muriel__28" />
+    <node id="Muriel__29" />
+    <node id="Squealer__31" />
+    <node id="Snowball__18" />
+    <node id="Squealer__37" />
+    <node id="Squealer__36" />
+    <node id="Benjamin__28" />
+    <node id="young pigs__37" />
+    <node id="Boxer__41" />
+    <node id="Boxer__40" />
+    <node id="Boxer__43" />
+    <node id="young pigs__39" />
+    <node id="Boxer__26" />
+    <node id="Boxer__24" />
+    <node id="Boxer__22" />
+    <node id="Boxer__21" />
+    <node id="Squealer__33" />
+    <node id="Squealer__19" />
+    <node id="Squealer__32" />
+    <node id="Snowball__26" />
+    <node id="Snowball__24" />
+    <node id="Squealer__18" />
+    <node id="Snowball__22" />
+    <node id="Snowball__19" />
+    <node id="Snowball__20" />
+    <node id="Squealer__29" />
+    <node id="Snowball__28" />
+    <node id="Clover__34" />
+    <node id="Clover__35" />
+    <node id="Squealer__40" />
+    <node id="Squealer__41" />
+    <node id="young pigs__21" />
+    <node id="young pigs__20" />
+    <node id="Boxer__33" />
+    <node id="Boxer__34" />
+    <node id="Boxer__35" />
+    <node id="Snowball__1" />
+    <node id="Benjamin__29" />
+    <node id="Minimus__16" />
+    <node id="Minimus__17" />
+    <node id="Snowball__31" />
+    <node id="Snowball__32" />
+    <node id="Snowball__35" />
+    <node id="Snowball__36" />
+    <edge source="Clover__29" target="Squealer__29" />
+    <edge source="Clover__28" target="Clover__29" />
+    <edge source="Squealer__39" target="Squealer__40" />
+    <edge source="Snowball__17" target="Snowball__18" />
+    <edge source="Snowball__16" target="Minimus__16" />
+    <edge source="Snowball__16" target="Squealer__16" />
+    <edge source="Squealer__17" target="Snowball__17" />
+    <edge source="Squealer__16" target="Squealer__17" />
+    <edge source="Muriel__28" target="Muriel__29" />
+    <edge source="Muriel__29" target="Squealer__29" />
+    <edge source="Squealer__31" target="Snowball__31" />
+    <edge source="Snowball__18" target="Squealer__18" />
+    <edge source="Squealer__37" target="young pigs__37" />
+    <edge source="Squealer__36" target="Squealer__37" />
+    <edge source="Benjamin__28" target="Benjamin__29" />
+    <edge source="young pigs__37" target="young pigs__39" />
+    <edge source="Boxer__41" target="Boxer__43" />
+    <edge source="Boxer__40" target="Boxer__41" />
+    <edge source="young pigs__39" target="Squealer__39" />
+    <edge source="Boxer__26" target="Snowball__26" />
+    <edge source="Boxer__24" target="Boxer__26" />
+    <edge source="Boxer__22" target="Snowball__22" />
+    <edge source="Boxer__21" target="Boxer__22" />
+    <edge source="Squealer__33" target="Boxer__33" />
+    <edge source="Squealer__19" target="Snowball__19" />
+    <edge source="Squealer__32" target="Squealer__33" />
+    <edge source="Snowball__26" target="Snowball__28" />
+    <edge source="Snowball__24" target="Boxer__24" />
+    <edge source="Squealer__18" target="Squealer__19" />
+    <edge source="Snowball__22" target="Snowball__24" />
+    <edge source="Snowball__19" target="Snowball__20" />
+    <edge source="Snowball__20" target="young pigs__20" />
+    <edge source="Squealer__29" target="Squealer__31" />
+    <edge source="Snowball__28" target="Benjamin__28" />
+    <edge source="Snowball__28" target="Clover__28" />
+    <edge source="Snowball__28" target="Muriel__28" />
+    <edge source="Clover__34" target="Clover__35" />
+    <edge source="Clover__35" target="Snowball__35" />
+    <edge source="Squealer__40" target="Squealer__41" />
+    <edge source="Squealer__40" target="Boxer__40" />
+    <edge source="Squealer__41" target="Boxer__41" />
+    <edge source="young pigs__21" target="Boxer__21" />
+    <edge source="young pigs__20" target="young pigs__21" />
+    <edge source="Boxer__33" target="Boxer__34" />
+    <edge source="Boxer__34" target="Boxer__35" />
+    <edge source="Boxer__34" target="Clover__34" />
+    <edge source="Boxer__35" target="Snowball__35" />
+    <edge source="Snowball__1" target="Snowball__16" />
+    <edge source="Benjamin__29" target="Squealer__29" />
+    <edge source="Minimus__16" target="Minimus__17" />
+    <edge source="Minimus__17" target="Snowball__17" />
+    <edge source="Snowball__31" target="Snowball__32" />
+    <edge source="Snowball__32" target="Squealer__32" />
+    <edge source="Snowball__35" target="Snowball__36" />
+    <edge source="Snowball__36" target="Squealer__36" />
+  </graph>
+</graphml>

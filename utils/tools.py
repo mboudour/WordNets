@@ -59,6 +59,7 @@ def draw_network(G,sstt,pos={},with_edgewidth=False,withLabels=True,pernode_dict
         #     print i
         #     print i[1][edgecolor]
         edge_col=[i[2][edgecolor] for i in G.edges(data=True)]
+        # print edge_col
         ne=nx.draw_networkx_edges(G,pos=pos,edge_color=edge_col,cmap=cmg,width=edgewidth, alpha=ealpha)#,edge_labels=weights,label_pos=0.2)
         fig.colorbar(ne, orientation='horizontal')
     else:
@@ -257,6 +258,93 @@ def draw_centralities_subplots(G,pos,withLabels=True,labfs=10,valpha=0.4,ealpha=
         kk=plt.axis('off')
     if vals:
         return valus
+
+def create_centralities_list(G,maxiter=2000,pphi=5,centList=[]):
+    if len(centList)==0:
+        centList=['degree_centrality','closeness_centrality','betweenness_centrality',
+    'eigenvector_centrality','katz_centrality','page_rank']
+    cenLen=len(centList)
+    valus={}
+    # plt.figure(figsize=figsi)
+    for uu,centr in enumerate(centList):
+        if centr=='degree_centrality':
+            cent=nx.degree_centrality(G)
+            sstt='Degree Centralities'
+            ssttt='degree centrality'
+            valus[centr]=cent
+        elif centr=='closeness_centrality':
+            cent=nx.closeness_centrality(G)
+            sstt='Closeness Centralities'
+            ssttt='closeness centrality'
+            valus[centr]=cent
+
+        elif centr=='betweenness_centrality':
+            cent=nx.betweenness_centrality(G)
+            sstt='Betweenness Centralities'
+            ssttt='betweenness centrality'
+            valus[centr]=cent
+
+        elif centr=='eigenvector_centrality':
+            try:
+                cent=nx.eigenvector_centrality(G,max_iter=maxiter)
+                sstt='Eigenvector Centralities'
+                ssttt='eigenvector centrality'
+                valus[centr]=cent
+
+            except:
+                valus[centr]=None
+
+                continue
+        elif centr=='katz_centrality':
+            phi = (1+math.sqrt(pphi))/2.0 # largest eigenvalue of adj matrix
+            cent=nx.katz_centrality_numpy(G,1/phi-0.01)
+            sstt='Katz Centralities'
+            ssttt='Katz centrality'
+            valus[centr]=cent
+
+        elif centr=='page_rank':
+            try:
+                cent=nx.pagerank(G)
+                sstt='PageRank'
+                ssttt='pagerank'
+                valus[centr]=cent
+
+            except:
+                valus[centr]=None
+
+                continue
+        print '%s done!!!' %sstt
+
+        # cs={}
+        # for k,v in cent.items():
+        #     if v not in cs:
+        #         cs[v]=[k]
+        #     else:
+        #         cs[v].append(k)
+        # nodrank=[]
+        # uui=0
+        # for k in sorted(cs,reverse=True):
+        #     for v in cs[k]:
+        #         if uui<5:
+        #             nodrank.append(v)
+        #             uui+=1
+        # nodeclo=[]
+        # for k,v in cent.items():
+        #     if k in  nodrank :
+        #         nodeclo.append(v)
+        #     else:
+        #         nodeclo.append(0.)
+        # plt.subplot(1+cenLen/2.,2,uu+1).set_title(sstt)
+        # if withLabels:
+        #     labe=nx.draw_networkx_labels(G,pos=pos,font_size=labfs)
+        # nx.draw_networkx_nodes(G,pos=pos,nodelist=cent.keys(),
+        #                        node_color=nodeclo,
+        #                        cmap=plt.cm.Reds,alpha=valpha)
+        # nx.draw_networkx_edges(G,pos=pos,edge_color='b', alpha=ealpha)
+        # plt.title(sstt,fontsize=20)
+        # kk=plt.axis('off')
+    # if vals:
+    return valus
 
 def draw_comms(G,dom,idom,doml,nodoml ,par,cpar,d,dd,c,cc,alpha,ealpha,nodper,sstt,titlefont=20,labelfont=20,valpha=0.2):
     import community 
@@ -578,6 +666,7 @@ def igraph_draw_traj(filname,pold,polar=True,layout=None):
     g = ig.read(filname,format="graphml")
     pols=[]
     for i in g.vs:
+        print i
         pols.append(pold[i['id']])
     # print pols
     if polar:
@@ -601,3 +690,83 @@ def igraph_draw_traj(filname,pold,polar=True,layout=None):
     visual_style["margin"] = 100
     return g,visual_style,layout
     # ig.plot(g,  **visual_style)
+def search_in_list_lists(x,name,columnname):
+    l=x[columnname]
+    if any([name in i for i in l]):
+        return True
+    else: 
+        return False
+def search_in_list(x,name,columnname):
+    l=x[columnname]
+    return name in l
+
+def arrows_transitions(pols,subj,titlename):
+    import matplotlib as mpl
+    import matplotlib.gridspec as gridspec
+    fig=plt.figure(figsize=(15,12))
+    # fig.set_figsize=(12,10)
+    gs = gridspec.GridSpec(1,2,
+                           width_ratios=[15,1],
+                           height_ratios=[1,1]#,figsize=(12,10)
+                           )
+    # f, ax = plt.subplots(figsize=(12,9))
+    fig.add_subplot(gs[0])
+    ax1 = plt.subplot(gs[0])
+    helen=.051
+    cols=[]
+    lines=[]
+    for i,c in enumerate(pols):
+    #     print i
+        if i<len(pols)-1:
+    #         print c, subj[i], pols[i+1]-c, subj[i+1]-subj[i]
+    #         print all(jjk ==0. for jjk in [c, subj[i], pols[i+1]-c, subj[i+1]-subj[i]])
+            if not all(jjk ==0. for jjk in [c, subj[i], pols[i+1]-c, subj[i+1]-subj[i]]):
+                
+    #             ax1.arrow(c, subj[i], pols[i+1]-c, subj[i+1]-subj[i], head_width=0.03, head_length=0, fc='b', ec='b',
+    # #                   length_includes_head=False,
+    # #                  head_starts_at_zero=True
+    # #                  overhang=-.51
+    #                  fill=False)
+    #         else:
+                ax1.arrow(c, subj[i], pols[i+1]-c, subj[i+1]-subj[i], head_width=0.03, head_length=helen, fc='b', ec='b',
+                      length_includes_head=True,
+    #                  head_starts_at_zero=True
+    #                  overhang=-.51
+                     fill=False)
+    #         col=(1./(1.*len(pols)-i),1,0)
+            col=(1.*i/(1.*len(pols)),.5,.5)
+            cols.append(col)
+            plt.plot(c,subj[i],'o',color=col, markersize=20)
+    #         print any(jj >1 for jj in [c,subj[i],pols[i+1],subj[i+1]])
+    ax1.set_xlabel('Polarity')
+    ax1.set_ylabel('Subjectivity')     
+    plt.xlim(-1.1, 1.1)
+    plt.ylim(-.1, 1.1)
+    ax2=fig.add_subplot(gs[1])
+    # ax2 = plt.subplot(gs[1])
+    cmap = mpl.colors.ListedColormap(cols)
+    # cmap.set_over((1., 0., 0.))
+    # cmap.set_under((0., 0., 1.))
+
+    bounds = [-1., -.5, 0., .5, 1.]
+    norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
+
+    cb3 = mpl.colorbar.ColorbarBase(ax2, cmap=cmap,
+    #                                 norm=norm,
+    #                                 boundaries=[-10] + bounds + [10],
+    #                                 extend='both',
+                                    # Make the length of each extension
+                                    # the same as the length of the
+                                    # interior colors:
+    #                                 extendfrac='auto',
+                                    ticks=[ 0,.5, 1],
+    #                                 spacing='uniform',
+                                    orientation='vertical')
+    # f.colorbar(lines)
+    # cbar = fig.colorbar(cax, ticks=[-1, 0, 1], orientation='horizontal')
+    # cb3.set_xtick([-1, 0, 1])
+    temp_trash=cb3.ax.set_yticklabels(['Start', 'Middle', 'End'])
+
+    trtitle=titlename + "'s Transitions in Sentiment Space"
+    # trtitle='Transitions of '+ntei
+    fig.suptitle(trtitle, fontsize=14, fontweight='bold')

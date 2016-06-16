@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="directed">
+    <node id="Napoleon__17" />
+    <node id="Napoleon__16" />
+    <node id="Napoleon__1" />
+    <node id="Napoleon__26" />
+    <node id="Napoleon__24" />
+    <node id="Napoleon__28" />
+    <node id="Napoleon__20" />
+    <node id="Napoleon__19" />
+    <node id="Napoleon__18" />
+    <node id="Napoleon__35" />
+    <node id="Napoleon__22" />
+    <node id="Napoleon__36" />
+    <node id="Napoleon__31" />
+    <node id="Napoleon__32" />
+    <edge source="Napoleon__17" target="Napoleon__18" />
+    <edge source="Napoleon__1" target="Napoleon__16" />
+    <edge source="Napoleon__26" target="Napoleon__28" />
+    <edge source="Napoleon__19" target="Napoleon__20" />
+    <edge source="Napoleon__35" target="Napoleon__36" />
+    <edge source="Napoleon__22" target="Napoleon__24" />
+    <edge source="Napoleon__31" target="Napoleon__32" />
+  </graph>
+</graphml>
