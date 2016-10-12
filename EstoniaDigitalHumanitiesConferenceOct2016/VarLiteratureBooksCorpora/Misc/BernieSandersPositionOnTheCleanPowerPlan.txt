@@ -1,0 +1,111 @@
+Bernie Sanders' Position on the Clean Power Plan
+
+His proposals would require withdrawing the rule and would increase
+its legal vulnerability
+
+   BernieSanders In an interview with Grist last week,
+   Presidential candidate Bernie Sanders provided details about
+   his views on the Clean Power Plan, the Obama administration's
+   rule to reduce greenhouse gas emissions from existing power
+   plants.  Sanders said two things of note: the first is that he
+   would change the CPP to increase incentives for renewable
+   fuels; the second is that he would change the rule to regulate
+   methane emissions as well as carbon dioxide.    These changes
+   are presumably part of Sanders' overall climate plan, which
+   includes imposing a carbon tax on emitters.
+
+   The odds of getting a carbon tax through Congress don't seem
+   high.  But as President, Sanders would have executive authority
+   to make changes to the currently finalized Clean Power Plan,
+   presumably by withdrawing it, reissuing a new proposed rule,
+   putting it through the required notice and comment period and
+   then finalizing it in response to the comments.  It's an
+   interesting position for Sanders to take:  on the one hand, he
+   wants to make the Clean Power Plan more ambitious.  Being more
+   ambitious on climate policy than President Obama and,
+   presumably, than Hilary Clinton (who has said she'll defend the
+   Clean Power Plan), is a not surprising strategy  for him (and
+   makes clear that he ‘s not a single issue candidate).  But the
+   strategy also raises pretty starkly the dilemma raised by a
+   strategy that elevates principle over pragmatism.  Revising the
+   Clean Power Plan would cause significant delay in its
+   implementation simply because of the procedural requirements
+   of notice and comment (ignoring for a moment the increased
+   controversy it would ignite against an already controversial
+   plan).  And delay in reducing greenhouse gas emissions is
+   problematic on at least two fronts: the longer we delay
+   implementation, the more expensive reductions become, and delay
+   makes it more difficult to achieve our Paris commitment to
+   achieve 26 to 28 percent reductions in our emissions by 2025.
+   Sanders would sacrifice these practicalities to get greater
+   reductions in emissions over the long run. He would also
+   probably lose the D.C. Circuit panel of judges currently
+   hearing legal challenges to the CPP, a panel that includes
+   at least two judges likely to accord the administration
+   significant deference in its choice about how to regulate
+   greenhouse gases under the Clean Air Act.
+
+   Sanders' changes would also almost certainly mean more legal
+   vulnerability for the Clean Power Plan, especially his proposal
+   to regulate methane emissions through the Plan.  Here's why.
+   The CPP, issued under Section 111d of the Clean Air Act and
+   explained in much more detail here, requires EPA to issue
+   emissions guidelines to states to regulate existing sources
+   using the "best system of emission reduction".  EPA's CPP does
+   so for electric power plants by developing guidelines for
+   electric power plants that set an overall amount by which each
+   state must reduce its greenhouse gases.  What is controversial
+   about EPA plan is that in setting the rates, EPA determined
+   the state "budgets" by using not just the reductions that could
+   be achieved from installing traditional controls placed on
+   individual power plants, which is a more traditional way of
+   regulating.  EPA also included  emissions reductions states
+   could achieve by having its electricity sector switch from
+   using coal to natural gas and by having the electricity sector
+   increase its reliance on renewable and nuclear energy.  The
+   latter two elements go "beyond the fence line" of the power
+   plants and it is this "beyond the fence line" element of the
+   CPP that is the subject of much of the legal challenge to it.
+   Opponents argue that EPA should only be requiring states to
+   reduce emissions based on the reductions it could achieve by
+   regulating individual power plants.  Such an approach would
+   achieve far fewer reductions than the Obama CPP.
+
+   One of Sanders' proposals - to increase the incentives for
+   renewable energy by extending the Clean Energy Incentive
+   Program– should probably not alter the legal vulnerability of
+   the current plan.  The program provides extra credit to states
+   during the early years of the CPP and Sanders would extend the
+   program to 2030.
+
+   But the second of Sanders' proposals - to use the CPP to
+   regulate methane emissions, would extend the CPP far "beyond
+   the fence line," to include the transport (and possibly the
+   extraction) of natural gas through pipelines.  The CPP's legal
+   defense of the current CPP is based on an important factual
+   premise: that the electricity system is one giant machine and
+   therefore a "system" under the phraseology of Section 111d.
+   Sanders' proposal is apparently to also regulate emissions
+   caused by leaks in the  the vast system of natural gas
+   pipelines in the country that bring natural gas to power
+   plants. It may extend even further to include methane released
+   from hydrofracking, though it is unclear from Sanders'
+   statements if he means to be so inclusive.   Sanders is clearly
+   focused here on public opposition to fracking and worries about
+   methane leaks, exacerbated by the recent fiasco involving a
+   massive methane leak from a Southern California Edison storage
+   site.  And methane is a potent greenhouse gas, more than 20
+   times more intense than carbon dioxide.  But it is a curious
+   choice to use the Clean Power Plan, focused on emissions from
+   the electricity sector, to go after methane emissions from the
+   natural gas sector.  The CPP would then stray so far past the
+   fence line that even judges who are predisposed to defer to EPA
+   rulemaking might refuse to do so.  Moreover, the Obama
+   Administration has already issued proposed rules to regulate
+   methane emissions from the oil and gas sector under the Clean
+   Air Act (rules that have been criticized by some
+   environmentalists as too weak for focusing on new sources,
+   though Obama has also moved to reduce methane leaks from
+   existing sources on public lands).  Why Sanders wants to use
+   the CPP to do so - delaying its implementation and increasing
+   its legal vulnerability - is unclear.
